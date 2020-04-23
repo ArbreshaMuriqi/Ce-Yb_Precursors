@@ -1,0 +1,93 @@
+$title
+Yb-precursor2-Yb+O2
+$operating system unix
+$symmetry c1
+$coord    file=coord
+$user-defined bonds    file=coord
+$atoms
+n  1-6                                                                         \
+   basis =n def-SV(P)
+c  7-8,10,12-13,15-16,20,22,24,26,30,34,38,42,46,50,54,58,62,66,70,74,78       \
+   basis =c def-SV(P)
+h  9,11,14,17-19,21,23,25,27-29,31-33,35-37,39-41,43-45,47-49,51-53,55-57,     \
+   59-61,63-65,67-69,71-73,75-77,79-81                                         \
+   basis =h def-SV(P)
+yb 82                                                                          \
+   basis =yb def-SV(P)                                                         \
+   ecp   =yb def-ecp
+o  83-84                                                                       \
+   basis =o def-SV(P)
+$basis    file=basis
+$ecp    file=basis
+$newecp
+$rundimensions
+   dim(fock,dens)=247107
+   natoms=84
+   nshell=322
+   nbf(CAO)=701
+   nbf(AO)=646
+   dim(trafo[SAO<-->AO/CAO])=812
+   rhfshells=2
+$uhfmo_alpha   file=alpha
+$uhfmo_beta   file=beta
+$uhf
+$alpha shells
+ a       1-148                                  ( 1 )
+$beta shells
+ a       1-147                                  ( 1 )
+$scfiterlimit       500
+$thize     0.10000000E-04
+$thime        5
+$scfdump
+$scfintunit
+ unit=500       size=0        file=twoint
+$scfdiis
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$optimize
+   internal   off
+   cartesian  on
+   global     off
+   basis      off   logarithm
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$lock off
+$dft
+   functional pbe0
+   gridsize   m3
+$scfconv   6
+$scfdamp   start=0.700  step=0.050  min=0.050
+$scforbitalshift  closedshell=.05
+$last step     dscf
+$statistics  off parallel
+$2e-ints_shell_statistics    file=metastase
+$charge from dscf
+          0.000 (not to be modified here)
+$dipole from dscf
+  x     0.25668705165845    y     1.33700703296563    z     0.97514790584319    a.u.
+   | dipole | =    4.2565199825  debye
+$last SCF energy change = -.43742693E-06
+$2e-ints'_shell_statistics
+  file=metastase
+$optinfo       file=optinfo
+$hessapprox   file=hessapprox
+$orbital_max_rnorm 0.31428130013721E-03
+$end
